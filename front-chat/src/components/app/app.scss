@@ -1,30 +1,28 @@
 .container {
-
   display: grid;
   grid-template-columns: 1fr 3fr;
-	height: 100vh;
-.header{
-height: 60px;
-}
+  height: 100vh;
 
 
-.sidebar {
-	
-	background-color: aqua;
-  &__header {
-		background-color: pink;
+  .header {
+    height: 60px;
   }
-  &__list {
-		background-color: orange;
+
+  h1 {
+    color: #ffffff;
+		font-size: 16px;
   }
+  h2 {
+		font-style: normal;
+		font-size: 16px;
+		line-height: 20px;
+    color: #aaaaaa;
+  }
+
+  
 }
-
-.main{
-	background-color: red;
-
-	&__header{
-		background-color: papayawhip;
-	}
-}
-
+@media screen and (max-width: 1376px) {
+  .container {
+    margin: 0;
+  }
 }
