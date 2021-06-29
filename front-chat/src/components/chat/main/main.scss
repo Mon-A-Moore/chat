@@ -1,8 +1,10 @@
+
 .main {
   background-color: #0f0f0f;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 
   &__header {
     background-color: #212121;
@@ -114,4 +116,7 @@
     }
 
   }
+}
+.inactive{
+	display: none;
 }

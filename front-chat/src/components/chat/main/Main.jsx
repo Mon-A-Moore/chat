@@ -1,15 +1,44 @@
 import React from 'react';
 import GroupName from './groupname/GroupName';
 import Contentcontaier from './contentcontainer/Contentcontaier';
-
+import classNames from 'classnames';
 import './main.scss';
 import '../sidebar/sidebar.scss';
 
-const Main = () => {
+const Main = ({list,selected,inaddarr}) => {
+	
+	const [inputvalue, setinputvalue] = React.useState('');
+
+
+ const handKeyPress=(e)=>{
+	 if(e.key ==="Enter"){
+		 handleSubmit(e);
+	 }
+ }
+ const handleSubmit=(e)=>{
+	 e.preventDefault();
+	 addmessage(inputvalue);
+	 setinputvalue('');
+ }
+
+	const addmessage=(input)=>{
+		if(!input){
+			return;
+		}
+/* 		console.log(input); */
+
+	inaddarr({
+			listid:list.id,
+      id: Date.now(),
+      messagetext: input,
+    });
+
+	};
+
   return (
-    <div className="main">
+    <div className={classNames('main',  selected[1] === false && 'inactive')}>
       <div className="main__header header">
-        <GroupName />
+        <GroupName  name={list.name} icons={list.icons} count={list.userscount}/>
         <button className="buttonBurger">
           <svg
             fill="#AAAAAA"
@@ -27,7 +56,7 @@ const Main = () => {
           </div>
         </button>
       </div>
-      <Contentcontaier />
+      <Contentcontaier usersid={list.usersid} messages={list.messages} />
       <div className="chat-input">
         <div className="chat-input__container">
           <div className="chat-input__container-input">
@@ -48,7 +77,7 @@ const Main = () => {
                 </div>
               </div>
               <div className="input">
-                <input className="chatInput" type="text" placeholder="Сообщение" />
+                <form onSubmit={handleSubmit}><input onKeyDown={handKeyPress} value={inputvalue}  onChange={(click) => setinputvalue(click.target.value)} className="chatInput" type="text" placeholder="Сообщение" /></form>
               </div>
               <div className="smile-file-container">
                 <div className="smile-file">

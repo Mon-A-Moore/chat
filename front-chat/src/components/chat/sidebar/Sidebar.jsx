@@ -3,7 +3,8 @@ import List from './list';
 
 import './sidebar.scss';
 
-const Sidebar = ({ list }) => {
+const Sidebar = ({ list, selected}) => {
+	
   return (
     <div className="sidebar">
       <div className="sidebar__header header">
@@ -25,7 +26,7 @@ const Sidebar = ({ list }) => {
           <input type="text" placeholder="Поиск" />
         </div>
       </div>
-      <List list={list} />
+      <List list={list} selected={selected} />
     </div>
   );
 };

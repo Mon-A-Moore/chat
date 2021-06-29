@@ -11,23 +11,12 @@ const io = require('socket.io')(httpServer, {
 app.use(cors());
 app.use(express.json());
 
-const rooms = new Map();
+import E from './events';
+import { readFile,updateFile } from 'fs';
 
-app.get('/rooms',(req,res)=>{
-	res.json(rooms);
-});
 
-app.post('/rooms',(req,res)=>{
-	const{UserName}=req.body;
-	if(!rooms.has()) res.send();
-	{
-		rooms.set(userName)
-	}
-});
 
-io.on('connection', (socketIO) => {
-  console.log('user connected', socketIO.id);
-});
+
 
 httpServer.listen(4000, (err) => {
   if (err) {
